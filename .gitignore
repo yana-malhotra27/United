@@ -1,4 +1,4 @@
-lib/flutter_options.dart
+#lib/flutter_options.dart
 # Miscellaneous
 *.class
 *.log
