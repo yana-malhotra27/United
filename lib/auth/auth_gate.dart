@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:united/auth/login_or_register.dart';
-import 'package:united/pages/home_page.dart';
+import 'package:united/page/home_page.dart';
 //this page is listening whether we are signed in or not
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
