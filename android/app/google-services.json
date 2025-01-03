@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "641005871037",
+    "project_id": "united-59d46",
+    "storage_bucket": "united-59d46.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641005871037:android:536e1bd3939269a98cbcd4",
+        "android_client_info": {
+          "package_name": "com.example.united"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI843DpbDKqvH2dHTvpuysrDQWLi5fMnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
