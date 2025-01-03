@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:united/auth/auth_service.dart';
+import 'package:united/components/my_drawer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -19,7 +20,7 @@ class HomePage extends StatelessWidget {
           IconButton(onPressed: logout, icon: Icon(Icons.logout))
         ],
       ),
-      drawer: Drawer(),
+      drawer: MyDrawer(),
     );
   }
 }
