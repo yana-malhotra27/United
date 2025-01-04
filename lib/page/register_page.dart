@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:united/auth/auth_service.dart';
+import 'package:united/services/auth/auth_service.dart';
 import 'package:united/components/my_button.dart';
 import 'package:united/components/my_textfield.dart';
 
@@ -79,21 +79,21 @@ class RegisterPage extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           //email textfield
-          MyTextfield(
+          MyTextField(
             hintText: "Enter your Email",
             obscureText: false,
             controller: _emailController,
           ),
           const SizedBox(height: 8),
           //pw textfield
-          MyTextfield(
+          MyTextField(
             hintText: "Enter your Password",
             obscureText: true,
             controller: _pwController,
           ),
           const SizedBox(height: 8),
           //cfpw textfield
-          MyTextfield(
+          MyTextField(
             hintText: "Confirm Password",
             obscureText: true,
             controller: _confirmPwController,

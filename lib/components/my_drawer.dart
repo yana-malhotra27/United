@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:united/services/auth/auth_service.dart';
+import 'package:united/page/settings_page.dart';
+
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
+
+  void logout() async {
+    //get auth service
+    final authService = AuthService();
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -16,9 +25,8 @@ class MyDrawer extends StatelessWidget {
                 child: Center(
                   child: Image(
                     image: AssetImage('lib/iconsimade/logou.png'),
-                    width: 70,
-                    height: 70,
-                  ),
+                    width: 400,
+                    height: 400,
                   ),
                 ),
               ),
