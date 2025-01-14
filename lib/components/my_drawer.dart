@@ -24,7 +24,7 @@ class MyDrawer extends StatelessWidget {
               DrawerHeader(
                 child: Center(
                   child: Image(
-                    image: AssetImage('lib/iconsimade/logou.png'),
+                    image: AssetImage('lib/iconsimade/img.png'),
                     width: 400,
                     height: 400,
                   ),

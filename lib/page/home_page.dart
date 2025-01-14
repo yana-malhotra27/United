@@ -16,20 +16,28 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text(
+          "Home",
+          style: TextStyle(
+            color: const Color.fromARGB(255, 109, 15, 106),
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: const Color.fromARGB(255, 216, 194, 220),
+        elevation: 5,
       ),
       drawer: MyDrawer(),
       body: _buildUserList(),
     );
   }
 
-
 //build a list of users except for the current logged in user
   Widget _buildUserList() {
     return StreamBuilder(
       stream: _chatService.getUserStream(),
       builder: (context, snapshot) {
-       // error
+        // error
         if (snapshot.hasError) {
           return const Text('Error!');
         }

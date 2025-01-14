@@ -29,14 +29,18 @@ class _ChatPageState extends State<ChatPage> {
   final ChatService _chatService = ChatService();
   final AuthService _authService = AuthService();
 
+  //for textfield focus
   FocusNode myFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-
+    //add listener to focus node
     myFocusNode.addListener(() {
       if (myFocusNode.hasFocus) {
+        //cause a delay so that the keyboard has time to show up
+        //then the amount of remaining space will be calculated,
+        //then scroll down
         Future.delayed(
           const Duration(
             milliseconds: 500,
@@ -45,6 +49,12 @@ class _ChatPageState extends State<ChatPage> {
         );
       }
     });
+
+    //wait a bit for listview to be built,then scroll to bottom
+    Future.delayed(
+      const Duration(milliseconds: 500),
+      () => scrollDown(),
+    );
   }
 
   @override
@@ -54,6 +64,7 @@ class _ChatPageState extends State<ChatPage> {
     super.dispose();
   }
 
+  // scroll controller
   final ScrollController _scrollController = ScrollController();
   void scrollDown() {
     _scrollController.animateTo(
@@ -62,6 +73,7 @@ class _ChatPageState extends State<ChatPage> {
       curve: Curves.fastOutSlowIn,
     );
   }
+
   //send message
   void sendMessage() async {
     //if there is something inside the textfield
@@ -71,8 +83,11 @@ class _ChatPageState extends State<ChatPage> {
         widget.recieverID,
         _messageController.text,
       );
+      //clear text controller
       _messageController.clear();
     }
+
+    scrollDown();
   }
 
   @override
@@ -97,6 +112,7 @@ class _ChatPageState extends State<ChatPage> {
       ),
     );
   }
+
   //build message list
   Widget _buildMessageList() {
     String senderID = _authService.getCurrentUser()!.uid;
@@ -122,12 +138,13 @@ class _ChatPageState extends State<ChatPage> {
       },
     );
   }
+
   //build message item
   Widget _buildMessageItem(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-
+    //is current user
     bool isCurrentUser = data['senderID'] == _authService.getCurrentUser()!.uid;
-
+    //align message to the right if sender is the current user, otherwise left
     var alignment =
         isCurrentUser ? Alignment.centerRight : Alignment.centerLeft;
 
@@ -145,6 +162,7 @@ class _ChatPageState extends State<ChatPage> {
       ),
     );
   }
+
   //build message input
   Widget _buildUserInput() {
     return Padding(
@@ -157,7 +175,7 @@ class _ChatPageState extends State<ChatPage> {
               controller: _messageController,
               hintText: "Type a message",
               obscureText: false,
-              //focusNode: myFocusNode,
+              focusNode: myFocusNode,
             ),
           ),
           Container(
