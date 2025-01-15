@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:united/page/login_page.dart';
 import 'package:united/page/register_page.dart';
+//The LoginOrRegister widget acts as a navigation handler to toggle between the LoginPage and the RegisterPage
 
 class LoginOrRegister extends StatefulWidget {
   const LoginOrRegister({super.key});

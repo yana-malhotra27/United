@@ -2,7 +2,7 @@ import 'package:united/themes/dark_mode.dart';
 import 'package:united/themes/light_mode.dart';
 import 'package:flutter/material.dart';
 
-class ThemeProvider extends ChangeNotifier {
+class ThemeProvider extends ChangeNotifier { //notify widgets when something changes.
   ThemeData _themeData = lightMode;
 
   ThemeData get themeData => _themeData;
@@ -11,7 +11,7 @@ class ThemeProvider extends ChangeNotifier {
 
   set themeData(ThemeData themeData) {
     _themeData = themeData;
-    notifyListeners();
+    notifyListeners(); //ensures that the app updates instantly.
   }
 
   void toggleTheme() {

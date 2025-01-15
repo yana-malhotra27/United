@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:united/services/auth/auth_service.dart';
 import 'package:united/components/my_button.dart';
 import 'package:united/components/my_textfield.dart';
-
+//flow
+//Enter email and password.
+//Tap a "Login" button to log in.
+//Navigate to the registration page.
 class LoginPage extends StatelessWidget {
   //email and pw text controllers
   final TextEditingController _emailController = TextEditingController();
@@ -74,7 +77,7 @@ class LoginPage extends StatelessWidget {
           //pw textfield
           MyTextField(
             hintText: "Enter your Password",
-            obscureText: true,
+            obscureText: true, //hides pw
             controller: _pwController,
           ),
           const SizedBox(height: 20),

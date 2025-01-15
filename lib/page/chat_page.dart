@@ -6,7 +6,9 @@ import 'package:united/services/auth/auth_service.dart';
 import 'package:united/services/chat/chat_services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+//View real-time chat messages exchanged with another user.
+//Send new messages.
+//Automatically scroll to the latest messages when typing or sending.
 class ChatPage extends StatefulWidget {
   final String recieverEmail;
   final String recieverID;
@@ -30,12 +32,13 @@ class _ChatPageState extends State<ChatPage> {
   final AuthService _authService = AuthService();
 
   //for textfield focus
-  FocusNode myFocusNode = FocusNode();
+  FocusNode myFocusNode = FocusNode(); //Tracks whether the text field is focused (to trigger auto-scrolling).
 
   @override
   void initState() {
     super.initState();
     //add listener to focus node
+    //Waits for the keyboard to appear, then scrolls down.
     myFocusNode.addListener(() {
       if (myFocusNode.hasFocus) {
         //cause a delay so that the keyboard has time to show up
@@ -65,7 +68,8 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   // scroll controller
-  final ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController(); //Manages scrolling within the chat list.
+  //Ensures the latest message is always visible.
   void scrollDown() {
     _scrollController.animateTo(
       _scrollController.position.maxScrollExtent,
@@ -79,10 +83,11 @@ class _ChatPageState extends State<ChatPage> {
     //if there is something inside the textfield
     if (_messageController.text.isNotEmpty) {
       //send the message
-      await _chatService.sendMessages(
+      await _chatService.sendMessages( //Sends the message
         widget.recieverID,
         _messageController.text,
       );
+      //Clears the input field and scrolls to the bottom.
       //clear text controller
       _messageController.clear();
     }

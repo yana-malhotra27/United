@@ -4,13 +4,17 @@ import 'package:united/page/chat_page.dart';
 import 'package:united/services/auth/auth_service.dart';
 import 'package:united/components/my_drawer.dart';
 import 'package:united/services/chat/chat_services.dart';
+//flow
+//A list of users is displayed (except the currently logged-in user).
+//The user can select another user to start a chat.
+//The page has a drawer also for logging out and theme.
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   //chat and auth service
-  final ChatService _chatService = ChatService();
-  final AuthService _authService = AuthService();
+  final ChatService _chatService = ChatService(); //Handles fetching the list of users from the database.
+  final AuthService _authService = AuthService(); //Provides information about the currently logged-in user.
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +38,7 @@ class HomePage extends StatelessWidget {
 
 //build a list of users except for the current logged in user
   Widget _buildUserList() {
-    return StreamBuilder(
+    return StreamBuilder( //Listens to a real-time stream of user data from the database and updates UI whenever user list changes
       stream: _chatService.getUserStream(),
       builder: (context, snapshot) {
         // error
