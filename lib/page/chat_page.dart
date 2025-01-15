@@ -1,5 +1,3 @@
-//import 'dart:js_util';
-
 import 'package:united/components/chat_bubble.dart';
 import 'package:united/components/my_textfield.dart';
 import 'package:united/services/auth/auth_service.dart';
