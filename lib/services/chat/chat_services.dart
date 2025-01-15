@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:united/models/message.dart';
+
 //The ChatService class provides backend functionality for managing user streams, sending messages, and retrieving chat messages in a Flutter app integrated with Firebase.
 //user stream
 //send messages
@@ -13,9 +14,12 @@ class ChatService {
   //User Stream
   //Fetches a real-time stream of users from the Users collection in Firestore.
   // get user stream
-  Stream<List<Map<String, dynamic>>> getUserStream() { //list of maps where it has email id and maybe id
-    return _firestore.collection("Users").snapshots().map((snapshot) { //Uses snapshots() to listen for real-time updates.
-      return snapshot.docs.map((doc) { //Maps each document in the Users collection to a list of user data.
+  Stream<List<Map<String, dynamic>>> getUserStream() {
+    //list of maps where it has email id and maybe id
+    return _firestore.collection("Users").snapshots().map((snapshot) {
+      //Uses snapshots() to listen for real-time updates. if not use snapshots so u have to refresh it again and again
+      return snapshot.docs.map((doc) {
+        //Maps each document in the Users collection to a list of user data.
         // go through each individual user
         final user = doc.data();
         //return user
@@ -56,7 +60,6 @@ class ChatService {
         );
   }
 
-
   // get messages
   //Generate Chat Room ID
   //Fetch Messages
@@ -73,7 +76,9 @@ class ChatService {
         .collection("chat_rooms")
         .doc(chatRoomID)
         .collection('messages')
-        .orderBy("timestamp", descending: false) //Orders messages by their timestamp in ascending order.
+        .orderBy("timestamp",
+            descending:
+                false) //Orders messages by their timestamp in ascending order.
         .snapshots();
   }
 }
